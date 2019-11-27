@@ -20,6 +20,16 @@ db_production: &db_production
     <<: *db
 # ----------------------------------------------------------------------------------------------------------------------
 
+# Eureka configuration -------------------------------------------------------------------------------------------------
+eureka: &eureka
+    EUREKA_SERVICE_NAME:
+    EUREKA_URL:
+    EUREKA_PORT:
+
+eureka_production: &eureka_production
+    <<: *eureka
+# ----------------------------------------------------------------------------------------------------------------------
+
 development:
     <<: *db_development
 
@@ -28,3 +38,4 @@ test:
 
 production:
     <<: *db_production
+    <<: *eureka_production
