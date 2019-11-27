@@ -1,0 +1,2 @@
+class InAppNotification < Notification
+end

@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch('RAILS_MAX_THREADS') { 5 } %>
+  host: <%= ENV.fetch('DB_HOST') { '' } %>
+  port: <%= ENV.fetch('DB_PORT') { '' } %>
+  username: <%= ENV.fetch('DB_USERNAME') { '' } %>
+  password: <%= ENV.fetch('DB_PASSWORD') { '' } %>
+
+development:
+  <<: *default
+  database: authentication_microservice_development
+
+test:
+  <<: *default
+  database: authentication_microservice_test
+
+production:
+  <<: *default
+  database: authentication_microservice_production

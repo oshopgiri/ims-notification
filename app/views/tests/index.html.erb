@@ -1,0 +1,39 @@
+<textarea id="markdown-editor"></textarea>
+
+<button id="save-markdown">SAVE</button>
+
+<script>
+	let simpleMDE = new SimpleMDE({
+		element: $('#markdown-editor')[0]
+	});
+	let tags = {};
+
+	$('#save-markdown').on('click', function () {
+		((simpleMDE.value() || '')
+			.match(/{{\s?\w+(\.?\w*)*\s?}}/g) || [])
+			.filter(function (match) {
+				return match || false;
+			})
+			.forEach(function (match) {
+				keys = match
+					.replace(/[{}]/g, '')
+					.split('.')
+					.filter(function (key) {
+						return key || false;
+					});
+
+				stringToObject(keys, tags)
+			});
+
+		console.log(JSON.stringify(tags))
+	});
+
+	function stringToObject(parts, object) {
+		let part;
+		while (part = parts.shift()) {
+			if (typeof object[part] != "object")
+				object[part] = {};
+			object = object[part];
+		}
+	}
+</script>
