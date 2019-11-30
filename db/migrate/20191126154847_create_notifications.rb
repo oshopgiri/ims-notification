@@ -4,6 +4,7 @@ class CreateNotifications < ActiveRecord::Migration[5.2]
 			t.string :user_uuid
 			t.jsonb :body
 			t.string :type
+			t.references :template
 
 			t.timestamps
 		end
