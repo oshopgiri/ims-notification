@@ -10,24 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_180838) do
+ActiveRecord::Schema.define(version: 2019_12_01_214850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applied_templates", force: :cascade do |t|
+    t.text "markup"
+    t.jsonb "skeleton"
+    t.bigint "template_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["template_id"], name: "index_applied_templates_on_template_id"
+  end
 
   create_table "notifications", force: :cascade do |t|
     t.string "user_uuid"
     t.jsonb "body"
     t.string "type"
-    t.bigint "template_id"
+    t.bigint "applied_template_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["template_id"], name: "index_notifications_on_template_id"
+    t.index ["applied_template_id"], name: "index_notifications_on_applied_template_id"
   end
 
   create_table "templates", force: :cascade do |t|
     t.text "markup"
-    t.text "skeleton"
+    t.jsonb "skeleton"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

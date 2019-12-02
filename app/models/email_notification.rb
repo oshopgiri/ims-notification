@@ -1,3 +1,7 @@
 class EmailNotification < Notification
-	belongs_to :template
+	belongs_to :applied_template
+
+	def notify
+		puts 'sending Email Notification'
+	end
 end
