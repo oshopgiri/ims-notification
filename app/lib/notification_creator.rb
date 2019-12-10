@@ -5,7 +5,7 @@ class NotificationCreator
 
 	def generate
 		begin
-			notifier = @params[:type].constantize.new(@params)
+			notifier = "#{@params[:type].titleize.delete(' ')}Notification".constantize.new(@params)
 			notifier.notify
 		rescue
 			notifier = Notification.new
