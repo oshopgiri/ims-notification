@@ -43,7 +43,10 @@ gem 'figaro'
 gem 'rails_admin', '~> 2.0'
 
 # Service Discovery
-gem 'ruby_eureka'
+# gem 'ruby_eureka'
+
+# HTTP calls
+gem 'httparty'
 
 group :development, :test do
 	# Call 'byebug' anywhere in the code to stop execution and get a debugger console

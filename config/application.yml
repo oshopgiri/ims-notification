@@ -24,7 +24,6 @@ db_production: &db_production
 eureka: &eureka
     EUREKA_SERVICE_NAME:
     EUREKA_URL:
-    EUREKA_PORT:
 
 eureka_production: &eureka_production
     <<: *eureka
