@@ -1,6 +1,6 @@
 class Notification < ApplicationRecord
-	TYPE_IN_APP = 'InAppNotification'.freeze
-	TYPE_EMAIL = 'EmailNotification'.freeze
+	TYPE_IN_APP = 'in-app'.freeze
+	TYPE_EMAIL = 'email'.freeze
 	TYPES = [TYPE_IN_APP, TYPE_EMAIL]
 
 	validates :user_uuid, presence: true
